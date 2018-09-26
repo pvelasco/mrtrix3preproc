@@ -1,0 +1,153 @@
+{
+  "name": "mrtrix3preproc",
+  "label": "mrTrix3: Preprocessing Pipeline",
+  "description": "mrtrix3preproc runs the mrTrix3 preprocessing pipeline in the diffussion data. It uses FSLs topup when the optional inverted phase encoding files are found, otherwise uses the eddy tool. It performs some other denoising steps, and it can normalize or align to acpc the data.",
+  "maintainer": "Garikoitz Lerma-Usabiaga <glerma@stanford.edu>",
+  "author": "mrTrix, FSL and Brain-Life teams.",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils",
+  "source": "https://github.com/scitran-apps/mrtrix3preproc",
+  "license": "Apache-2.0",
+  "flywheel": {
+    "suite": "FSL"
+  },
+  "version": "0.0.1",
+  "custom": {
+    "docker-image": "scitran-apps/mrtrix3preproc:0.0.1"
+  },
+  "config": {
+    "rpe": {
+      "description": "specify if there are reverse phase encoding files. Options are 'none', 'header', 'pairs', 'all'. [default=none]",
+      "default": "none",
+      "type": "string",
+      "id": "-rpe"
+    },
+    "acqd": {
+      "description": "acquisition phase encoding direction [default=PA]",
+      "default": "PA",
+      "type": "string",
+      "id": "-acqd"
+    },
+    "denoise": {
+      "description": "denoise data using PCA [default=true]",
+      "default": true,
+      "type": "boolean",
+      "id": "-denoise"
+    },
+    "degibbs": {
+      "description": "perform Gibbs ringing correction  [default=true]",
+      "default": true,
+      "type": "boolean",
+      "id": "-degibbs"
+    },
+    "eddy": {
+      "description": "perform eddy current correction. If inverted phase encoding direction files are found, eddy will be done as part of topup. [default=true]",
+      "default": true,
+      "type": "boolean",
+      "id": "-eddy"
+    },
+    "bias": {
+      "description": "compute bias correction with ANTs on dwi data [default=true]",
+      "default": true,
+      "type": "boolean",
+      "id": "-bias"
+    },
+    "ricn": {
+      "description": "perform Rician background noise removal [default=true]",
+      "default": true,
+      "type": "boolean",
+      "id": "-ricn"
+    },
+    "norm": {
+      "description": "perform intensity normalization of dwi data [default=false]",
+      "default": false,
+      "type": "boolean",
+      "id": "-norm"
+    },
+    "nval": {
+      "description": "normalize intensity of generous FA white matter mask to this number [default=1000]",
+      "default": 1000,
+      "type": "number",
+      "id": "-nval"
+    },
+    "acpc": {
+      "description": "align dwi data with AC-PC anatomy [default=false]",
+      "default": false,
+      "type": "boolean",
+      "id": "-acpc"
+    },
+    "reslice": {
+      "description": "By default reslicing is not done. If you want it done, set a number to reslice diffusion data to this isotropic voxel size (in mm). Optional",
+      "optional": true,
+      "type": "number",
+      "id": "-reslice"
+    }
+  },
+  "inputs": {
+    "DIFF": {
+      "description": "Diffusion NIfTI image.",
+      "base": "file",
+      "type": {
+        "enum": [
+          "nifti"
+        ]
+      }
+    },
+    "BVAL": {
+      "description": "BVAL file.",
+      "base": "file",
+      "type": {
+        "enum": [
+          "bval"
+        ]
+      }
+    },
+    "BVEC": {
+      "description": "BVEC file.",
+      "base": "file",
+      "type": {
+        "enum": [
+          "bvec"
+        ]
+      }
+    },
+    "ANAT": {
+      "description": "Anatomical T1w NIfTI image.",
+      "base": "file",
+      "type": {
+        "enum": [
+          "nifti"
+        ]
+      }
+    },
+    "RDIF": {
+      "description": "Optional reverse phase encoded (rpe) diffusion NIfTI image.",
+      "base": "file",
+      "optional": true,
+      "type": {
+        "enum": [
+          "nifti"
+        ]
+      }
+    },
+    "RBVL": {
+      "description": "Optional reverse phase encoded (rpe) BVAL file.",
+      "base": "file",
+      "optional": true,
+      "type": {
+        "enum": [
+          "bval"
+        ]
+      }
+    },
+    "RBVC": {
+      "description": "Optional reverse phase encoded (rpe) BVEC file.",
+      "base": "file",
+      "optional": true,
+      "type": {
+        "enum": [
+          "bvec"
+        ]
+      }
+    }
+  }
+}
