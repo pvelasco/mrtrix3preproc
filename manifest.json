@@ -13,7 +13,7 @@
   },
   "version": "1.0.0",
   "custom": {
-    "docker-image": "scitran-apps/mrtrix3preproc:1.0.0"
+    "docker-image": "scitran/mrtrix3preproc:1.0.0"
   },
   "config": {
     "rpe": {
