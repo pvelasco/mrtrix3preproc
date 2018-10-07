@@ -10,9 +10,9 @@
   "flywheel": {
     "suite": "FSL"
   },
-  "version": "0.0.1",
+  "version": "1.0.1",
   "custom": {
-    "docker-image": "scitran-apps/mrtrix3preproc:0.0.1"
+    "docker-image": "scitran-apps/mrtrix3preproc:1.0.1"
   },
   "config": {
     "rpe": {
@@ -75,8 +75,14 @@
       "type": "boolean",
       "id": "-acpc"
     },
+    "doreslice": {
+      "description": "Do reslicing [default=false]",
+      "default": false,
+      "type": "boolean",
+      "id": "-doreslice"
+    },
     "reslice": {
-      "description": "By default reslicing is not done. If you want it done, set a number to reslice diffusion data to this isotropic voxel size (in mm). Optional",
+      "description": "By default reslicing is not done. If doreslice=true, set a number here to reslice diffusion data to this isotropic voxel size (in mm). Optional",
       "optional": true,
       "type": "number",
       "id": "-reslice"
