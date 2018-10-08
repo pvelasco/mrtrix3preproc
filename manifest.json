@@ -11,9 +11,9 @@
   "flywheel": {
     "suite": "MRtrix"
   },
-  "version": "1.0.1",
+  "version": "1.0.2",
   "custom": {
-    "docker-image": "scitran-apps/mrtrix3preproc:1.0.1"
+    "docker-image": "scitran-apps/mrtrix3preproc:1.0.2"
   },
   "config": {
     "rpe": {
@@ -107,8 +107,9 @@
       }
     },
     "ANAT": {
-      "description": "Anatomical T1w NIfTI image.",
+      "description": "Optional anatomical T1w NIfTI image. Required only if acpc=true",
       "base": "file",
+      "optional": true,
       "type": {
         "enum": [
           "nifti"
