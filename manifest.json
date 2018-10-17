@@ -8,12 +8,12 @@
   "source": "https://github.com/scitran-apps/mrtrix3preproc",
   "license": "Other",
   "cite": "Gear adapted from https://github.com/brain-life/app-mrtrix3-preproc. Ref: https://mrtrix.readthedocs.io/en/latest/reference/scripts/dwipreproc.html#references",
-  "flywheel": {
-    "suite": "MRtrix"
-  },
   "version": "1.0.2",
   "custom": {
-    "docker-image": "scitran-apps/mrtrix3preproc:1.0.2"
+    "docker-image": "scitran-apps/mrtrix3preproc:1.0.2",
+    "flywheel": {
+      "suite": "MRtrix"
+    }
   },
   "config": {
     "rpe": {
